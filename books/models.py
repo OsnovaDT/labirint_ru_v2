@@ -137,7 +137,7 @@ class Book(models.Model):
         on_delete=models.CASCADE,
         verbose_name='Книжное издательство',
     )
-    episodes = models.ForeignKey(
+    episode = models.ForeignKey(
         'Episode',
         on_delete=models.CASCADE,
         verbose_name='Серия книжного издательства',

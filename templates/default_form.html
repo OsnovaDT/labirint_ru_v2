@@ -23,16 +23,16 @@
                     <br>
                     {{ field }}
                 </p>
-            {% endfor %}
 
-            <!-- Field errors-->
-            {% if field.errors %}
-                {% for error in field.errors %}
-                    <div class="alert alert-danger">
-                        <em>{{ error }}</em>
-                    </div>
-                {% endfor %}
-            {% endif %}
+                <!-- Field errors-->
+                {% if field.errors %}
+                    {% for error in field.errors %}
+                        <div class="alert alert-danger">
+                            <em>{{ error }}</em>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endfor %}
 
             <input type="hidden" name="next" value='{{ next }}'>
             {% block form_button %}

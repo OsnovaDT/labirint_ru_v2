@@ -36,3 +36,31 @@ class Author(models.Model):
         verbose_name_plural = 'Авторы'
         ordering = ['name']
         db_table = 'author'
+
+
+class PublishingHouse(models.Model):
+    """Book publishing house"""
+    
+    name = models.CharField(
+        'Название издательства',
+        max_length=100,
+        unique=True,
+    )
+    info = models.TextField(
+        'Информация об издательстве',
+        null=True,
+        blank=True,
+    )
+    image = models.ImageField(
+        verbose_name='Логотип издательства',
+        unique=True,
+    )
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'Издательство'
+        verbose_name_plural = 'Издательства'
+        ordering = ['name']
+        db_table = 'publishing_house'

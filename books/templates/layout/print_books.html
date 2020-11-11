@@ -1,0 +1,30 @@
+{% extends 'layout/basic.html' %}
+
+{% block content %}
+    <div class="row offset-md-1">
+        
+        {% for book in books %}
+            <div class="col-md-3">
+                <!-- Image -->
+                <img src="{{ book.image.url }}" alt="{{ book }}" height="165">
+
+                <!-- Price -->
+                <h4><b>{{ book.price }} ₽</b></h4>
+
+                <!-- Title -->
+                <h5>{{ book }}</h5>
+
+                <!-- Author -->
+                <h6>{{ book.author }}</h6>
+
+                <!-- Publishing house and episode -->
+                {% if book.episode %}
+                    <h6>{{ book.publishing_house }}: {{ book.episode }}</h6>
+                {% else %}
+                    <h6>{{ book.publishing_house }}</h6>
+                {% endif %}
+            </div>
+        {% endfor %}
+            
+    </div>
+{% endblock content %}    

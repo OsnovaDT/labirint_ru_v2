@@ -44,6 +44,11 @@
                             href='{% url "accounts:logout" %}'>
                                 Выйти
                             </a>
+
+                            <a class='dropdown-item'
+                            href='{% url "accounts:password_change" %}'>
+                                Сменить пароль
+                            </a>
                             {% endif %}
                         </div>
                         {% endif %}

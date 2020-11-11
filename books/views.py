@@ -1,4 +1,5 @@
 from django.views.generic.list import ListView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from .models import (
     Book, Author, Episode,
@@ -7,7 +8,7 @@ from .models import (
 
 
 # For index page
-class BookListView(ListView):
+class BookListView(LoginRequiredMixin, ListView):
     """Class with all books which used on index page"""
     
     template_name = 'books/index.html'

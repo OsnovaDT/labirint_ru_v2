@@ -20,8 +20,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    # Books app
     'books.apps.BooksConfig',
+    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -39,7 +39,9 @@ ROOT_URLCONF = 'labirint_ru_v2.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'templates')
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -99,3 +101,11 @@ STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# Login and logout
+
+LOGIN_REDIRECT_URL = 'books:index'
+
+LOGOUT_REDIRECT_URL = 'accounts:login'
+
+LOGIN_URL = 'accounts:login'

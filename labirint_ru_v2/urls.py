@@ -4,11 +4,9 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    # Admin
     path('admin/', admin.site.urls),
-
-    # Index page
     path('index/', include('books.urls')),
+    path('accounts/', include('accounts.urls')),
 ]
 
 if settings.DEBUG:

@@ -40,7 +40,7 @@ class Author(models.Model):
 
 class PublishingHouse(models.Model):
     """Book publishing house"""
-    
+
     name = models.CharField(
         'Название издательства',
         max_length=100,
@@ -64,3 +64,27 @@ class PublishingHouse(models.Model):
         verbose_name_plural = 'Издательства'
         ordering = ['name']
         db_table = 'publishing_house'
+
+
+class Episode(models.Model):
+    """Publishing house episode"""
+    name = models.CharField(
+        'Название серии',
+        max_length=100,
+        unique=True,
+    )
+    publishing_house = models.ForeignKey(
+        'PublishingHouse',
+        on_delete=models.CASCADE,
+        verbose_name='Издательство серии',
+        related_name='episodes'
+    )
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'Серия'
+        verbose_name_plural = 'Серии'
+        ordering = ['name']
+        db_table = 'episode'

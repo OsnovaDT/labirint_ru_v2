@@ -2,7 +2,8 @@ from django.urls import path
 
 from .views import (
     BookListView, BookDetailView, AuthorListView,
-    PublishingHouseView, EpisodeView, GenreView
+    PublishingHouseView, EpisodeView, GenreView,
+    SearchBookAndAuthorView
 )
 
 
@@ -45,5 +46,12 @@ urlpatterns = [
         'genre/<int:genre_id>/',
         GenreView.as_view(),
         name='genre_books'
+    ),
+
+    # Search book and author
+    path(
+        'search/',
+        SearchBookAndAuthorView.as_view(),
+        name='search'
     ),
 ]

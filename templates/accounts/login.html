@@ -1,5 +1,7 @@
 {% extends 'default_form.html' %}
 
+{% load static %}
+
 {% block title %}Вход на сайт | Лабиринт{% endblock title %}
     
 {% block form_button %}
@@ -13,10 +15,19 @@
             Забыли пароль?
         </a>
     </p>
+    
     <p>
         <a class='text-dark'
         href="{% url 'accounts:sign_up' %}">
             <input class='btn btn-success' type="submit" value="Регистрация">
+        </a>
+    </p>
+
+    <p>
+        <a class='text-dark'
+        href="{% url 'social:begin' 'vk-oauth2' %}">
+            <img src="{% static 'accounts/img/vk.png' %}"
+            alt="VK" height="50">
         </a>
     </p>
 {% endblock after_form %}

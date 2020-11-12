@@ -7,8 +7,16 @@
 {% endblock form_button %}
 
 {% block after_form %}
-    <a class='text-dark'
-    href="{% url 'accounts:password_reset' %}">
-        Забыли пароль?
-    </a>
+    <p>
+        <a class='text-dark'
+        href="{% url 'accounts:password_reset' %}">
+            Забыли пароль?
+        </a>
+    </p>
+    <p>
+        <a class='text-dark'
+        href="{% url 'accounts:sign_up' %}">
+            <input class='btn btn-success' type="submit" value="Регистрация">
+        </a>
+    </p>
 {% endblock after_form %}

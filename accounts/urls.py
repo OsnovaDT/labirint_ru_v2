@@ -7,6 +7,8 @@ from django.contrib.auth.views import (
 )
 from django.urls import reverse_lazy
 
+from .views import SignUpView
+
 app_name = 'accounts'
 
 urlpatterns = [
@@ -87,5 +89,12 @@ urlpatterns = [
             'password_reset_complete.html'
         ),
         name='password_reset_complete'
+    ),
+
+    # Sign up
+    path(
+        'sign_up/',
+        SignUpView.as_view(),
+        name='sign_up'
     ),
 ]

@@ -42,10 +42,12 @@
                         </a>
                     </h6>
 
-                    <!-- Series -->
-                    {% if book.series %}
+                    <!-- Episode -->
+                    {% if book.episode %}
                     <h6>Серия:
-                            {{ book.series }}
+                        <a class='text-dark' href="{% url 'books:episode_books' book.episode.pk %}">
+                            {{ book.episode }}
+                        </a>
                     </h6>
                     {% endif %}
 

@@ -35,7 +35,11 @@
                 <h6>
                     <a class='text-dark'
                     href="{% url 'books:publishing_house_info' book.publishing_house.pk %}">
-                    {{ book.publishing_house }}</a>{% if book.episode %}: {{ book.episode }}
+                    {{ book.publishing_house }}</a>{% if book.episode %}: 
+                    <a class='text-dark'
+                    href="{% url 'books:episode_books' book.episode.pk %}">
+                        {{ book.episode }}
+                    </a>
                     {% endif %}
                 </h6>
             </div>

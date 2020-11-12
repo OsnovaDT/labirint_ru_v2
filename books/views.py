@@ -73,3 +73,27 @@ class PublishingHouseView(ListView):
         context['episodes'] = context['publ_house'].episodes.all()
 
         return context
+
+
+class EpisodeView(ListView):
+    """Episode's books view"""
+
+    template_name = 'books/episode_books.html'
+    paginate_by = 8
+    context_object_name = 'books'
+
+    def get_queryset(self):
+        return Book.objects.filter(
+            episode=self.kwargs['episode_id']
+        ).prefetch_related(
+            'authors', 'genres',
+            'publishing_house', 'episode'
+        )
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context['episode'] = Episode.objects.get(
+            pk=self.kwargs['episode_id']
+        )
+
+        return context

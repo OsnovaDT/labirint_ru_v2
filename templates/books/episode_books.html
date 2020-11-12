@@ -1,0 +1,29 @@
+{% extends 'print_books.html' %}
+
+{% block title %}
+Книги серии {{ episode }}
+{% endblock title %}
+
+{% block main_text %}
+<div class="row">
+    <div class="col-md-6 offset-md-1">
+        <h2>Издательство 
+            <a class='text-dark'
+            href="{% url 'books:publishing_house_info' episode.publishing_house.pk %}">
+                «{{ episode.publishing_house }}»
+            </a>
+        </h2>
+        <h2>Серия «{{ episode }}»</h2>
+    </div>
+</div>
+
+<hr>
+
+<div class="row">
+    <div class="col-md-6 offset-md-1">
+        <h4>{{ episode.publishing_house.info }}</h4>
+    </div>
+</div>
+
+<hr>
+{% endblock main_text %}

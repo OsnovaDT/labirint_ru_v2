@@ -1,7 +1,14 @@
 {% extends 'default_form.html' %}
 
-{% block title %}{{ user.username }} | Вход на сайт | Лабиринт{% endblock title %}
+{% block title %}Вход на сайт | Лабиринт{% endblock title %}
     
 {% block form_button %}
     <input class='btn btn-primary' type="submit" value="Войти">
 {% endblock form_button %}
+
+{% block after_form %}
+    <a class='text-dark'
+    href="{% url 'accounts:password_reset' %}">
+        Забыли пароль?
+    </a>
+{% endblock after_form %}

@@ -1,0 +1,15 @@
+{% extends 'print_books.html' %}
+
+{% block title %}
+Книги жанра {{ genre }}
+{% endblock title %}
+
+{% block main_text %}
+<div class="row">
+    <div class="col-md-6 offset-md-1">
+        <h2>Жанр «{{ genre }}»</h2>
+    </div>
+</div>
+
+<hr>
+{% endblock main_text %}

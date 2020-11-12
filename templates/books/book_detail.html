@@ -55,7 +55,10 @@
                     {% if book.get_genres %}
                     {% for genre in book.genres.all %}
                     <h6>Жанр:
+                        <a class='text-dark'
+                        href="{% url 'books:genre_books' genre.pk %}">    
                             {{ genre }}
+                        </a>
                     </h6>
                     {% endfor %}
                     {% endif %}

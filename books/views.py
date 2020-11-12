@@ -97,3 +97,27 @@ class EpisodeView(ListView):
         )
 
         return context
+
+
+class GenreView(ListView):
+    """Genre's books view"""
+
+    template_name = 'books/genre_books.html'
+    paginate_by = 8
+    context_object_name = 'books'
+
+    def get_queryset(self):
+        return Book.objects.filter(
+            genres=self.kwargs['genre_id']
+        ).prefetch_related(
+            'authors', 'genres',
+            'publishing_house', 'episode'
+        )
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context['genre'] = Genre.objects.get(
+            pk=self.kwargs['genre_id']
+        )
+
+        return context

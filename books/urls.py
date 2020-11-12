@@ -2,7 +2,7 @@ from django.urls import path
 
 from .views import (
     BookListView, BookDetailView, AuthorListView,
-    PublishingHouseView, EpisodeView
+    PublishingHouseView, EpisodeView, GenreView
 )
 
 
@@ -38,5 +38,12 @@ urlpatterns = [
         'episode/<int:episode_id>/',
         EpisodeView.as_view(),
         name='episode_books'
+    ),
+
+    # Genre's books
+    path(
+        'genre/<int:genre_id>/',
+        GenreView.as_view(),
+        name='genre_books'
     ),
 ]

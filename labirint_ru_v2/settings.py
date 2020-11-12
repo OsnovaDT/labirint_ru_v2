@@ -25,6 +25,8 @@ INSTALLED_APPS = [
     
     # For VK login
     'social_django',
+
+    'debug_toolbar',
 ]
 
 MIDDLEWARE = [
@@ -35,6 +37,13 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    # Debug toolbar
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
+]
+
+INTERNAL_IPS = [
+    '127.0.0.1',
 ]
 
 ROOT_URLCONF = 'labirint_ru_v2.urls'

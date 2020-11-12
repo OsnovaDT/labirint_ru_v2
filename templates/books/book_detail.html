@@ -36,7 +36,10 @@
 
                     <!-- Publishing house -->
                     <h6>Издательство:
+                        <a class='text-dark'
+                        href="{% url 'books:publishing_house_info' book.publishing_house.pk %}">
                             {{ book.publishing_house }}
+                        </a>
                     </h6>
 
                     <!-- Series -->

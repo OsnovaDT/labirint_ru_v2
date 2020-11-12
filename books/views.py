@@ -8,12 +8,11 @@ from .models import (
 )
 
 
-# For index page
 class BookListView(LoginRequiredMixin, ListView):
     """Class with all books which used on index page"""
     
     template_name = 'books/index.html'
-    paginate_by = 1
+    paginate_by = 12
     context_object_name = 'books'
     queryset = Book.objects.prefetch_related(
         'authors', 'publishing_house', 'episode', 'genres'
@@ -28,10 +27,10 @@ class BookDetailView(DetailView):
 
 
 class AuthorListView(ListView):
-    """Class with all author's books"""
+    """Author info view"""
 
-    template_name = 'books/author_books.html'
-    paginate_by = 2
+    template_name = 'books/author_info.html'
+    paginate_by = 8
     context_object_name = 'books'
     
     def get_queryset(self):
@@ -47,5 +46,30 @@ class AuthorListView(ListView):
         context['author'] = Author.objects.get(
             pk=self.kwargs['author_id']
         )
+
+        return context
+
+
+class PublishingHouseView(ListView):
+    """Publishing house info view"""
+
+    template_name = 'books/publishing_house_info.html'
+    paginate_by = 8
+    context_object_name = 'books'
+
+    def get_queryset(self):
+        return Book.objects.filter(
+            publishing_house=self.kwargs['publ_id']
+        ).prefetch_related(
+            'authors', 'genres',
+            'publishing_house', 'episode'
+        )
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context['publ_house'] = PublishingHouse.objects.get(
+            pk=self.kwargs['publ_id']
+        )
+        context['episodes'] = context['publ_house'].episodes.all()
 
         return context

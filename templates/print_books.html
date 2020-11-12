@@ -32,11 +32,12 @@
                 </h6>
 
                 <!-- Publishing house and episode -->
-                {% if book.episode %}
-                    <h6>{{ book.publishing_house }}: {{ book.episode }}</h6>
-                {% else %}
-                    <h6>{{ book.publishing_house }}</h6>
-                {% endif %}
+                <h6>
+                    <a class='text-dark'
+                    href="{% url 'books:publishing_house_info' book.publishing_house.pk %}">
+                    {{ book.publishing_house }}</a>{% if book.episode %}: {{ book.episode }}
+                    {% endif %}
+                </h6>
             </div>
         {% endfor %}
     </div>

@@ -21,6 +21,12 @@ urlpatterns = [
         '__debug__/',
         include(debug_toolbar.urls),
     ),
+
+    # Simple captcha
+    path(
+        'captcha/',
+        include('captcha.urls')
+    )
 ]
 
 if settings.DEBUG:

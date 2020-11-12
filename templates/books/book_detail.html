@@ -26,7 +26,12 @@
                 <div>
                     <!-- Author -->
                     {% for author in book.authors.all %}
-                    <h6>Автор: {{ author }}</h6>
+                    <h6>Автор: 
+                        <a class='text-dark'
+                        href="{% url 'books:author_info' author.pk %}">
+                            {{ author }}
+                        </a>
+                    </h6>
                     {% endfor %}
 
                     <!-- Publishing house -->

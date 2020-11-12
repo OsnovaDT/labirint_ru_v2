@@ -1,0 +1,31 @@
+{% extends 'print_books.html' %}
+
+{% load static %}
+
+{% block title %}
+Книги автора {{ author }} | Лабиринт
+{% endblock title %}
+
+{% block main_text %}
+<!-- Authors full names -->
+<div class="row">
+    <div class="col-md-6 offset-md-1">
+        <h2>{{ author.full_name }}</h2>
+    </div>
+</div>
+
+<hr>
+
+<!-- Authors info -->
+<div class="row">
+    <div class="col-md-6 offset-md-1">
+        <h4>{{ author.info }}</h4>
+    </div>
+
+    <div class="col-md-2 offset-md-1">
+        <img src="{{ author.image.url }}" alt="{{ author }}" height="160">
+    </div>
+</div>
+
+<hr>
+{% endblock main_text %}

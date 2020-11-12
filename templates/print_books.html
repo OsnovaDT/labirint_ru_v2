@@ -1,14 +1,15 @@
 {% extends 'basic.html' %}
 
 {% block content %}
+    {% block main_text %}
+    {% endblock main_text %}
     <div class="row offset-md-1">
-        
         {% for book in books %}
             <div class="col-md-3">
                 <!-- Image -->
                 <a class='text-dark'
                 href="{% url 'books:book_detail_info' book.pk %}">
-                    <img src="{{ book.image.url }}" alt="{{ book }}" height="165">
+                    <img src="{{ book.image.url }}" alt="{{ book }}" height="180">
                 </a>
 
                 <!-- Price -->
@@ -21,7 +22,14 @@
                 </a>
 
                 <!-- Author -->
-                <h6>{{ book.author }}</h6>
+                <h6>
+                    {% for author in book.authors.all %}
+                    <a class='text-dark' href="{% url 'books:author_info' author.pk %}">
+                        <!-- Set comma if author is not last -->
+                        {{ author }}</a>{% if author != book.authors.last %},
+                    {% endif %}
+                    {% endfor %}
+                </h6>
 
                 <!-- Publishing house and episode -->
                 {% if book.episode %}
@@ -31,6 +39,5 @@
                 {% endif %}
             </div>
         {% endfor %}
-            
     </div>
 {% endblock content %}    

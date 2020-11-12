@@ -1,0 +1,77 @@
+{% extends 'basic.html' %}
+
+{% block title %}
+Книга: {{ book }} ({{ book.get_authors }})
+{% endblock title %}
+
+{% block content %}
+<div class="row">
+    <!-- Top title -->
+    <div class="col-md-4 offset-md-3">
+        <h4>
+            {{book.get_authors}}: {{book}}
+        </h4>
+    </div>
+
+    <!-- Description -->
+    <div class="jumbotron col-md-4 offset-md-3">
+        <div class="row">
+            <!-- Image -->
+            <div class="col-md-2">
+                <img src="{{ book.image.url }}" alt="{{ book }}" height="340">
+            </div>
+
+            <!-- Description without image -->
+            <div class="col-md-5 offset-md-4">
+                <div>
+                    <!-- Author -->
+                    {% for author in book.authors.all %}
+                    <h6>Автор: {{ author }}</h6>
+                    {% endfor %}
+
+                    <!-- Publishing house -->
+                    <h6>Издательство:
+                            {{ book.publishing_house }}
+                    </h6>
+
+                    <!-- Series -->
+                    {% if book.series %}
+                    <h6>Серия:
+                            {{ book.series }}
+                    </h6>
+                    {% endif %}
+
+                    <!-- Genres -->
+                    {% if book.get_genres %}
+                    {% for genre in book.genres.all %}
+                    <h6>Жанр:
+                            {{ genre }}
+                    </h6>
+                    {% endfor %}
+                    {% endif %}
+
+                    <hr>
+
+                    <!-- Price -->
+                    <h6>Ваша цена:</h6>
+                    <h5>{{ book.price }} р.</h5>
+
+                    <hr>
+
+                    <h6>ID товара: {{ book.ID }}</h6>
+                    <h6>ISBN: {{ book.ISBN }}</h6>
+                    <h6>Страниц: {{ book.pages_amount }}</h6>
+                    <h6>Масса: {{ book.weight }} г</h6>
+                    <h6>Размеры: {{ book.sizes }} мм</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Annotation -->
+    <div class="col-md-4">
+        <h6><b>Аннотация к книге "{{ book }}"</b></h6>
+        <h6>{{ book.annotation }}</h6>
+    </div>
+</div>
+{% endblock content %}

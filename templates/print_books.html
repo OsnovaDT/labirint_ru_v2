@@ -6,13 +6,19 @@
         {% for book in books %}
             <div class="col-md-3">
                 <!-- Image -->
-                <img src="{{ book.image.url }}" alt="{{ book }}" height="165">
+                <a class='text-dark'
+                href="{% url 'books:book_detail_info' book.pk %}">
+                    <img src="{{ book.image.url }}" alt="{{ book }}" height="165">
+                </a>
 
                 <!-- Price -->
                 <h4><b>{{ book.price }} ₽</b></h4>
 
                 <!-- Title -->
-                <h5>{{ book }}</h5>
+                <a class='text-dark'
+                href="{% url 'books:book_detail_info' book.pk %}">
+                    <h5>{{ book }}</h5>
+                </a>
 
                 <!-- Author -->
                 <h6>{{ book.author }}</h6>

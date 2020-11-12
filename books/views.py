@@ -1,5 +1,6 @@
 from django.views.generic.list import ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic.detail import DetailView
 
 from .models import (
     Book, Author, Episode,
@@ -17,3 +18,8 @@ class BookListView(LoginRequiredMixin, ListView):
     queryset = Book.objects.prefetch_related(
         'authors', 'publishing_house', 'episode', 'genres'
     )
+
+
+class BookDetailView(DetailView):
+    model = Book
+    template_name = 'books/book_detail.html'

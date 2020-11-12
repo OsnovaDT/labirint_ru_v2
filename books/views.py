@@ -13,7 +13,7 @@ class BookListView(LoginRequiredMixin, ListView):
     """Class with all books which used on index page"""
     
     template_name = 'books/index.html'
-    paginate_by = 1
+    paginate_by = 8
     context_object_name = 'books'
     queryset = Book.objects.prefetch_related(
         'authors', 'publishing_house', 'episode',

@@ -26,9 +26,8 @@
                 <div>
                     <!-- Author -->
                     {% for author in book.authors.all %}
-                    <h6>Автор: 
-                        <a class='text-dark'
-                        href="{% url 'books:author_info' author.pk %}">
+                    <h6>Автор:
+                        <a class='text-dark' href="{% url 'books:author_info' author.pk %}">
                             {{ author }}
                         </a>
                     </h6>
@@ -36,8 +35,7 @@
 
                     <!-- Publishing house -->
                     <h6>Издательство:
-                        <a class='text-dark'
-                        href="{% url 'books:publishing_house_info' book.publishing_house.pk %}">
+                        <a class='text-dark' href="{% url 'books:publishing_house_info' book.publishing_house.pk %}">
                             {{ book.publishing_house }}
                         </a>
                     </h6>
@@ -55,8 +53,7 @@
                     {% if book.get_genres %}
                     {% for genre in book.genres.all %}
                     <h6>Жанр:
-                        <a class='text-dark'
-                        href="{% url 'books:genre_books' genre.pk %}">    
+                        <a class='text-dark' href="{% url 'books:genre_books' genre.pk %}">
                             {{ genre }}
                         </a>
                     </h6>

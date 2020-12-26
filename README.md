@@ -1,3 +1,16 @@
+# Images of some pages
+
+The main page:
+![The main page](https://github.com/OsnovaDT/labirint_ru_v2/raw/master/images/index_page.png)
+
+
+Author's page:
+![Author's page](https://github.com/OsnovaDT/labirint_ru_v2/raw/master/images/author_page.png)
+
+
+Book's page:
+![Book's page](https://github.com/OsnovaDT/labirint_ru_v2/raw/master/images/book_page.png)
+
 # Install necessary libraries
 Installation is explained for Linux Ubuntu
 
